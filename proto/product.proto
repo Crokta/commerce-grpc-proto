@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package product;
+
+service ProductService {
+  rpc CreateProduct (CreateProductRequest) returns (CreateProductResponse) {}
+  rpc FindOne (FindOneRequest) returns (FindOneResponse) {}
+  rpc DecreaseStock (DecreaseStockRequest) returns (DecreaseStockResponse) {}
+}
+
+message CreateProductRequest {
+  string name = 1;
+  string sku = 2;
+  int32 stock = 3;
+  double price = 4;
+}
+
+message CreateProductResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string id = 3;
+}
+
+message FindOneData {
+  string id = 1;
+  string name = 2;
+  string sku = 3;
+  int32 stock = 4;
+  double price = 5;
+}
+
+message FindOneRequest {
+  string id = 1;
+}
+
+message FindOneResponse {
+  string id = 1;
+  repeated string error = 2;
+  FindOneData data = 3;
+}
+
+message DecreaseStockRequest {
+  string id = 1;
+  int32 quantity = 2;
+}
+
+message DecreaseStockResponse {
+  int32 status = 1;
+  repeated string error = 2;
+}
