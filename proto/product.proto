@@ -34,7 +34,7 @@ message FindOneRequest {
 }
 
 message FindOneResponse {
-  string id = 1;
+  int32 status = 1;
   repeated string error = 2;
   FindOneData data = 3;
 }
